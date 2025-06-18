@@ -156,7 +156,7 @@
     <h1>Star Coloring of Hypergraphs</h1>
     
     <div class="abstract">
-        <strong>Abstract:</strong> This senior project investigates the star coloring problem for hypergraphs, extending classical graph coloring theory to higher-order structures. We establish both upper and lower bounds for the star chromatic number of r-uniform hypergraphs and provide probabilistic constructions demonstrating the tightness of these bounds.
+        <strong>Abstract:</strong> This senior project investigates the star coloring problem for hypergraphs. We establish both upper and lower bounds for the star chromatic number of r-uniform hypergraphs.
     </div>
 
     <div class="toc">
@@ -168,19 +168,15 @@
             <li><a href="#introduction">Introduction</a></li>
             <li><a href="#upper-bound">Upper Bound Results</a></li>
             <li><a href="#lower-bound">Lower Bound Results</a></li>
-            <li><a href="#theorems">Key Theorems</a></li>
         </ul>
     </div>
 
     <div id="team" class="section">
         <h2>Team Information</h2>
         <div class="team-info">
-            <p><strong>Institution:</strong> Hacettepe University, Department of Computer Engineering</p>
-            <p><strong>Location:</strong> Beytepe 06810 Ankara, Turkey</p>
-            <p><strong>Team Members:</strong></p>
             <ul>
-                <li>Author1 - <em>email@hacettepe.edu.tr</em></li>
-                <li>Author2 - <em>email@hacettepe.edu.tr</em></li>
+                <li><strong>Team Member:</strong> Polat Sarıyerli - <em>b2200356087@cs.hacettepe.edu.tr</em></li>
+                <li><strong>Advisor:</strong> Assoc. Prof. Dr. Lale Özkahya</li>
             </ul>
         </div>
     </div>
@@ -189,8 +185,8 @@
         <h2>Downloads</h2>
         <div class="downloads">
             <ul>
-                <li>📄 <a href="hypergraph_star_coloring.pdf" download>Full Research Paper (Draft) (PDF)</a></li>
-                <li>🖼 <a href="poster.pdf" download>Poster (PDF)</a></li>
+                <li><a href="hypergraph_star_coloring.pdf" download>Full Research Paper (Draft) (PDF)</a></li>
+                <li><a href="poster.pdf" download>Poster (PDF)</a></li>
             </ul>
         </div>
     </div>
@@ -207,26 +203,35 @@
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen>
             </iframe>
-            <p><em>2-minute presentation covering team introduction, problem statement, methodology, and demonstration</em></p>
+            <p><em>2-minute presentation covering team introduction, problem statement, methodology, though the demonstration is lacking due to the theoretical nature of the project</em></p>
         </div>
     </div>
 
     <div id="introduction" class="section">
-        <h2>Introduction</h2>
-        <p>Hypergraph coloring has been extensively studied in the literature. The <strong>star-coloring</strong> of a hypergraph is defined as a vertex coloring without a bicolored (2-colored) star, where a <em>star</em> in a hypergraph is a collection of edges with a nonempty common intersection.</p>
-        
-        <p>The star coloring problem for graphs was introduced by Grünbaum, who proved that a graph with maximum degree 3 has an acyclic coloring with 4 colors. We extend these results to hypergraphs and establish tight bounds on the star chromatic number.</p>
-        
-        <div class="math-display">
-            <p><strong>Definition:</strong> The <em>star chromatic number</em> of an $r$-uniform hypergraph $H$, denoted $\chi_s^r(H)$, is the minimum $k$ for which $H$ admits a star coloring with $k$ colors.</p>
-        </div>
+         <h2>Introduction</h2>
+
+  <p>In this work we study <em>hypergraphs</em>, which generalize undirected graphs by allowing each edge to connect any number of vertices.  Formally, an <strong>$r$-uniform hypergraph</strong> is a pair $H=(V,E)$ where each hyperedge $E\in E$ has exactly $r$ vertices.</p>
+
+  <p>We focus on the notion of <em>star coloring</em> for hypergraphs.  A <strong>star coloring</strong> is a vertex coloring satisfying two conditions:</p>
+  <ol>
+    <li><strong>No monochromatic edges:</strong> </li>
+    <li><strong>No bichromatic 3-paths</strong> except if the 3-path is also a star-path:</li>
+  </ol>
+  <p>A <em>star-path</em> is a <em>3-path</em> in which all three edges share at least one common vertex.  No other 3-path, be it a triangle or a regular 3-path, may use only two colors.</p>
+
+  <div class="math-display">
+    <p><strong>Definition:</strong> The <em>star chromatic number</em> of an $r$-uniform hypergraph $H$, denoted $\chi_s^r(H)$, is the minimum number of colors $k$ for which $H$ admits a star coloring with $k$ colors.</p>
+  </div>
+
+  <p>The <strong>purpose</strong> of this research is to derive general upper and lower bounds on $\chi_s^r(H)$ for arbitrary $r$-uniform hypergraphs.  To prove these bounds, we employ the <strong>probabilistic method</strong>: Where a random process is defined which randomly assigns certain properties to mathematical objects. Once it is shown that an object with a desired set of properties may be generated by this random process with non-zero probability, then we may conclude that such an object exists. 
+</p>
     </div>
 
     <div id="upper-bound" class="section">
         <h2>Upper Bound Results</h2>
         
         <div class="theorem-box">
-            <h3>Main Upper Bound Theorem</h3>
+            <h3>Upper Bound</h3>
             <p>Let $H$ be an $r$-uniform hypergraph of maximum degree $\Delta$, with vertex-set $V=V(H)$ and edge-set $E = E(H)$. Then the star chromatic number satisfies:</p>
             <div class="math-display">
                 $$\chi_s^r(H) \leq \left\lceil (2^{3r-3} \cdot 81 \cdot r^4 \cdot \alpha \cdot \Delta^3)^{\frac{2}{3r-4}} \right\rceil$$
@@ -236,20 +241,88 @@
         
         <details>
             <summary style="cursor: pointer; font-weight: bold; color: #800000;">
-                Key supporting lemmas & proofs
+                Key supporting lemmas & proof sketch
             </summary>
-      <div class="lemma-box" style="margin-top:10px;">
-        <h4>Lovász Local Lemma (General Form)</h4>
-        <p>Suppose…</p>
-        <div class="math-display">
-          $$\Pr[A_i]\le y_i\prod_{(i,j)\in E}(1-y_j)\dots$$
-        </div>
-      </div>
-      <div class="lemma-box">
-        <h4>…”Linear Path” Lemma</h4>
-        <p>…</p>
-      </div>
-    </details>
+              <div class="lemma-box" style="margin-top:10px;">
+                 <h4>General Lovász Local Lemma</h4>
+    <div class="math-display">
+      \[
+        \Pr[A_i] \le y_i \prod_{(i,j)\in E}(1-y_j)
+        \quad\text{for all }1 \le i \le n,
+      \]
+      where \(G=(V,E)\) is a dependency graph for the events \(A_1,\dots,A_n\) and \(0\le y_i<1\).
+      Then
+      \[
+        \Pr\!\bigl[\bigwedge_{i=1}^n \overline{A_i}\bigr]
+        \;\ge\;\prod_{i=1}^n(1-y_i),
+      \]
+      so in particular there is positive probability that no \(A_i\) occurs.
+            </div>
+          </div>
+             <div class="proof-sketch" style="margin-top:0.5em;">
+    <strong>Proof sketch.</strong>
+    <ul>
+      <li><em>Random coloring:</em> Assign each vertex one of \(x = \left\lceil (2^{3r-3} \cdot 81 \cdot r^4 \cdot \alpha \cdot \Delta^3)^{\frac{2}{3r-4}} \right\rceil\) colors uniformly at random.</li>
+      <li><em>Bad event types:</em>
+        <ul>
+          <li><strong>A<sub>M</sub>:</strong> some edge is monochromatic.</li>
+          <li><strong>A<sub>i</sub>:</strong> a bicolored non-star 3-path of “size” \(3r-i\), for \(i=2,\dots,\tfrac{3r}{2}\).</li>
+        </ul>
+      </li>
+      <li><em>Dependency graph:</em> Events are adjacent whenever their underlying vertex-sets intersect. For example, two \(A_M\) events share an edge if the two hyperedges share any vertex.</li>
+      <li>
+        <em>Dependency table:</em>
+        <table style="width:auto; margin:0.5em 0;" border="1" cellpadding="4">
+          <caption style="caption-side:bottom; color:DarkRed;">
+            Dependency table of bad events. Entry \([i,j]\) is an upper bound on how many events of type \(j\)
+            a type \(i\) event depends on.
+          </caption>
+          <tr>
+            <th></th><th>M</th><th>2</th><th>3</th><th>…</th><th>\(\tfrac{3r}{2}\)</th>
+          </tr>
+          <tr>
+            <th>M</th>
+            <td>\(r\Delta\)</td>
+            <td>\(\tfrac{5}{2}r^3\Delta^3\)</td>
+            <td>\(\tfrac{5}{2}r^3\Delta^3\)</td>
+            <td>…</td>
+            <td>\(\tfrac{5}{2}r^3\Delta^3\)</td>
+          </tr>
+          <tr>
+            <th>2</th>
+            <td>\(3r\Delta\)</td>
+            <td>\(\tfrac{15}{2}r^3\Delta^3\)</td>
+            <td>\(\tfrac{15}{2}r^3\Delta^3\)</td>
+            <td>…</td>
+            <td>\(\tfrac{15}{2}r^3\Delta^3\)</td>
+          </tr>
+          <tr>
+            <th>3</th>
+            <td>\(3r\Delta\)</td>
+            <td>\(\tfrac{15}{2}r^3\Delta^3\)</td>
+            <td>\(\tfrac{15}{2}r^3\Delta^3\)</td>
+            <td>…</td>
+            <td>\(\tfrac{15}{2}r^3\Delta^3\)</td>
+          </tr>
+          <tr>
+            <th>…</th><td>…</td><td>…</td><td>…</td><td>…</td><td>…</td>
+          </tr>
+          <tr>
+            <th>\(\tfrac{3r}{2}\)</th>
+            <td>\(3r\Delta\)</td>
+            <td>\(\tfrac{15}{2}r^3\Delta^3\)</td>
+            <td>\(\tfrac{15}{2}r^3\Delta^3\)</td>
+            <td>…</td>
+            <td>\(\tfrac{15}{2}r^3\Delta^3\)</td>
+          </tr>
+        </table>
+      </li>
+      <li>
+        <em>Apply the General Lovász Local Lemma:</em>None of the bad events occur with positive probability; hence a star coloring with x colors exists.
+      </li>
+    </ul>
+  </div>
+        </details>
     </div>
 
     <div id="lower-bound" class="section">
@@ -263,18 +336,11 @@
             </div>
         </div>
         
-        <p><strong>Proof technique:</strong> We use the probabilistic method on Erdős-Rényi random hypergraphs $G_r(n,p)$, showing that any coloring with too few colors must contain bichromatic triangles.</p>
-    </div>
-
-    <div id="theorems" class="section">
-        <h2>Key Supporting Results</h2>
+        <details>
+           <summary style="cursor: pointer; font-weight: bold; color: #800000;">
+                Key supporting lemmas & proof sketch
+            </summary>
         
-        <div class="lemma-box">
-            <h3>Lemma (Linear Path)</h3>
-            <p>For a real number $((\frac{r^2\ln(n)}{n} \cdot \frac{2^{r+3}}{3^{r-4}}))^{\frac{1}{3}} \leq p \leq 1$, let $m \leq \alpha(G_r(n,p))$ be the size of the maximum independent set in $G_r(n,p)$.</p>
-            
-            <p>Then, asymptotically almost surely and uniformly over $p$, any coloring of $G_r(n,p)$ with $k \leq \frac{n}{r}$ colors, where each color class has at most $\alpha(G_r(n,p)) \leq (\frac{r^r\ln{n}}{p})^{\frac{1}{r-1}}$ vertices, contains a bichromatic triangle $C_3^r$.</p>
-        </div>
         
         <div class="lemma-box">
             <h3>Lemma (Independence Number)</h3>
@@ -283,21 +349,36 @@
                 $$\alpha(G_r(n,p)) \leq \left(\frac{r^r\ln{n}}{p}\right)^{\frac{1}{r-1}}$$
             </div>
         </div>
-        
-        <div class="theorem-box">
-            <h3>Lovász Local Lemma (General Form)</h3>
-            <p>Suppose that $G=(V,E)$ is a dependency graph for events $A_1,A_2,\ldots,A_n$ and suppose there are real numbers $y_1,y_2,\ldots,y_n$ such that $0 \leq y_i < 1$ and:</p>
-            <div class="math-display">
-                $$\Pr[A_i] \leq y_i \prod_{(i,j) \in E} (1-y_j) \quad \text{for all } 1 \leq i \leq n$$
-            </div>
-            <p>Then $\Pr[\bigwedge_{i=1}^n \overline{A_i}] \geq \prod_{i=1}^n (1-y_i) > 0$.</p>
+            
+        <div class="lemma-box">
+            <h3>Lemma (Triangle)</h3>
+            <p>For a real number $((\frac{r^2\ln(n)}{n} \cdot \frac{2^{r+3}}{3^{r-4}}))^{\frac{1}{3}} \leq p \leq 1$, let $m \leq \alpha(G_r(n,p))$ be the size of the maximum independent set in $G_r(n,p)$.</p>
+            
+            <p>Then, asymptotically almost surely and uniformly over $p$, any coloring of $G_r(n,p)$ with $k \leq \frac{n}{r}$ colors, where each color class has at most $\alpha(G_r(n,p)) \leq (\frac{r^r\ln{n}}{p})^{\frac{1}{r-1}}$ vertices, contains a bichromatic triangle $C_3^r$.</p>
         </div>
+            
+                <p>
+      It can also be shown that asymptotically almost surely \(\Delta(G(n,p)) \le d\).
+    </p>
+    
+    <p>
+      Since each of these “good” events (small independence number, triangle existence, and bounded maximum degree) holds with probability tending to one, their intersection still has positive probability.  Therefore all conditions can be satisfied simultaneously with nonzero probability.
+    </p>
+    
+    <p>
+      Putting these together and rewriting in terms of \(\Delta\) yields the stated lower bound on \(\chi_s^r(d)\).
+    </p>
+        
+        </details>
+        
     </div>
+        
+        
 
     <footer style="margin-top: 50px; padding-top: 20px; border-top: 1px solid #ccc; text-align: center; color: #666;">
         <p>Hacettepe University, Department of Computer Engineering<br>
         Beytepe 06810 Ankara, Turkey</p>
-        <p><em>Senior Project - Star Coloring of Hypergraphs</em></p>
+        <p><em>Senior Project - Star Chromatic Number of Hypergraphs</em></p>
     </footer>
 
 </body>
