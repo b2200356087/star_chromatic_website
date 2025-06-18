@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Star Coloring of Hypergraphs</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+    
     <script>
         window.MathJax = {
             tex: {
@@ -13,6 +13,7 @@
             }
         };
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
     <style>
         body {
             font-family: "Times New Roman", Times, serif;
@@ -200,7 +201,7 @@
             <iframe
                 width="560"
                 height="315"
-                src="https://www.youtube.com/embed/BT4WzyT2g8k"
+                src="https://www.youtube.com/embed/gDrSB2v7m3g"
                 title="Star Coloring of Hypergraphs - Demo Video"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -233,7 +234,22 @@
             <p>for $r \geq 2$ and $\alpha = 3$.</p>
         </div>
         
-        <p><strong>Proof technique:</strong> We use the Lovász Local Lemma with a careful analysis of dependency graphs. The proof involves defining "bad" events for monochromatic edges and bicolored non-star substructures, then showing these events can be avoided with positive probability.</p>
+        <details>
+            <summary style="cursor: pointer; font-weight: bold; color: #800000;">
+                Key supporting lemmas & proofs
+            </summary>
+      <div class="lemma-box" style="margin-top:10px;">
+        <h4>Lovász Local Lemma (General Form)</h4>
+        <p>Suppose…</p>
+        <div class="math-display">
+          $$\Pr[A_i]\le y_i\prod_{(i,j)\in E}(1-y_j)\dots$$
+        </div>
+      </div>
+      <div class="lemma-box">
+        <h4>…”Linear Path” Lemma</h4>
+        <p>…</p>
+      </div>
+    </details>
     </div>
 
     <div id="lower-bound" class="section">
